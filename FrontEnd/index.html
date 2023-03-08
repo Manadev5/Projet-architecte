@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/d8e20da7db.js" crossorigin="anonymous"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
 		<ul>
 			<li><a href="index.html">projets</a></li>
 			<li><a href="#contact">contact</a></li>
-			<li><a href="login.html">login</a></li>
+			<li><a id="connexion" href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -34,8 +35,101 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
+	<div class="modifier-photo" href="">
+	<i class="fa-solid fa-pen-to-square"></i>
+	<p>modifier</p>
+    </div>
+	<aside class="modal" id="modal1" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal">
+	
+		<div class="modal-wrapper">
+			<h3 id="title-modal">Galerie photo</h3>
+			<a href=""><i class="fa-solid fa-xmark"></i><a>
+
+			<div class="images-modal">
+
+			<figure>
+			<img src="assets/images/abajour-tahina.png" alt=""><br>
+			<figcaption>editer</figcaption>
+		    <a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/appartement-paris-v.png" alt=""><br>
+			<figcaption>editer</figcaption>
+			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/appartement-paris-x.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/bar-lullaby-paris.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/hotel-first-arte-new-delhi.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/la-balisiere.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+			</figure>
+
+			<figure>
+			<img src="assets/images/le-coteau-cassis.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/restaurant-sushisen-londres.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/structures-thermopolis.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/villa-ferneze.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+			<figure>
+			<img src="assets/images/appartement-paris-xviii.png" alt="">
+			<figcaption>editer</figcaption>
+			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
+		    </figure>
+
+		    </div>
+			
+            <div class="add-photo">
+			<button>Ajouter une photo</button><br>
+			<a href="">Supprimer la galerie</a>
+		    </div>
+
+		</div>
+	</aside>
 	<section id="portfolio">
+		<div class="modifier-titre">
 		<h2>Mes Projets</h2>
+		<a class="logo-modifier" href="#modal1">
+		<i class="fa-solid fa-pen-to-square"></i>
+		<p>modifier</p>
+	    </a>
+	    </div>
 		<div class="filtres">
 		<button id= "btn-tous">Tous</button>
 	    <button id="btn-objets">Objets</button>
@@ -69,7 +163,7 @@
 		</ul>
 	</nav>
 </footer>
-<script src="./assets/gallerie.js"></script>
+<script src="./assets/galerie.js"></script>
 
 </body>
 </html>
