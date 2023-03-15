@@ -89,7 +89,83 @@ fetch("http://localhost:5678/api/works")
               
               
             })
+
+            let logoModifier = document.querySelector(".logo-modifier");
+
+            logoModifier.addEventListener("click" , function(){
+               return array
+            });
+            let modalWorks ='';
+            for(let element of array){
+               modalWorks += `
+              <figure>
+			    <img src="${element.imageUrl}" alt="">
+			    <figcaption>editer</figcaption>
+			    <i class="fa-sharp fa-solid fa-trash-can" data-id="${element.id}"></i>
+		       </figure> `;
+             let photosModal = document.querySelector(".images-modal");
+             photosModal.innerHTML="";
+             photosModal.innerHTML = modalWorks;
+            }
+
+            document.querySelectorAll(".fa-trash-can").forEach(element =>{
+               element.addEventListener("click", function (event){
+                  event.preventDefault();
+
+               let idDelete = element.dataset.id;
+               console.log(idDelete);
+
+               let token = localStorage.getItem("access-token");
+               fetch(`http://localhost:5678/api/works/${idDelete}`, {
+                        method:'DELETE',
+                       headers:{ 
+                         'accept': 'application/json',
+                         'Authorization':`Bearer ${token}`
+                      }
+                      
+                       })
             
+                   .then(response => response.json())
+                   .then(response => console.log(response))
+                   .catch(error =>console.error(error) )
+                })
+               });
+
+               let btnValidation = document.querySelector(".btn-valider"); 
+               
+               function addWork(){
+
+                  let imageData = document.getElementById("image");
+                  let titleData = document.getElementById("titre");
+                  let categoryData = document.getElementById("types-categorie");
+
+                  let formData = new FormData();
+                  formData.append("image", imageData.files[0]);
+                  formData.append("title", titleData.value);
+                  formData.append("category", categoryData.categoryId);
+                  console.log(imageData,titleData,categoryData);
+
+                  let token = localStorage.getItem("access-token");
+                  fetch('http://localhost:5678/api/works', {
+                      method : 'POST',
+                      headers :{
+                        'accept' : 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data'
+                      },
+                      body : formData
+                  })
+                  .then(res => res.json)
+                  .then(res => console.log(res))
+                  .catch(err => console.error(err))
+               }
+              
+               btnValidation.addEventListener("click", function(){
+                 addWork();
+               })
+
+             
+
 
             }
             
@@ -100,8 +176,9 @@ let changeConnexion = function (event) {
    let connexion = document.getElementById("connexion");
    let logoModifier = document.querySelector(".logo-modifier");
    let modifierPhoto = document.querySelector(".modifier-photo");
-   let filtres = document.querySelector(".filtres")
-
+   let filtres = document.querySelector(".filtres");
+   
+   
    if(token !== null){
        connexion.innerHTML = "logout";
      logoModifier.style.display = "flex";
@@ -113,6 +190,11 @@ let changeConnexion = function (event) {
       modifierPhoto.style.display  = "none";
       filtres.style.display = "flex";
    }
+
+   connexion.addEventListener("click", function(event){
+      localStorage.removeItem("access-token");
+      window.location.replace("index.html")
+   })
 }
 
 changeConnexion();
@@ -120,7 +202,9 @@ changeConnexion();
 let logoModifier = document.querySelector(".logo-modifier");
 let xCloseModal = document.querySelector(".fa-xmark");
 let body = document.querySelector("body");
-let modal = null;
+let buttonAjout = document.querySelector(".button-ajout");
+let iconPrecedent = document.querySelector(".fa-arrow-left");
+
 
 let openModal = function (open){
    open.preventDefault();
@@ -128,24 +212,46 @@ let openModal = function (open){
    target.style.display = "flex";
    target.removeAttribute("aria-hidden");
    target.setAttribute("arial-modal", "true");
-   body.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-   modal = target;
-   modal.addEventListener("click", closeModal)
+   body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+   
  
 }
 
 let closeModal = function(close){
-   if (modal === null) return
-   close.preventDefault();
+  close.preventDefault();  
   let target = document.querySelector(".modal");
   target.style.display= "none";
   target.setAttribute("aria-hidden", "true");
   target.setAttribute("arial-modal", "false");
   body.style.backgroundColor = "white";
-  modal.removeEventListener();
-  modal = null
+}
+
+let openModal2 = function(open){
+   open.preventDefault();
+   let formulaireModal = document.querySelector(".formulaire-modal");
+   let modalWrapper = document.querySelector(".modal-wrapper");
+   formulaireModal.style.display = "block";
+   modalWrapper.style.display = "none";
+   body.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
+}
+
+let closeModal2 = function(close){
+   close.preventDefault();
+   let formulaireModal = document.querySelector(".formulaire-modal");
+   let modalWrapper = document.querySelector(".modal-wrapper");
+   formulaireModal.style.display = "none";
+   modalWrapper.style.display = "block";
+   body.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
 }
 
 logoModifier.addEventListener("click", openModal);
 
 xCloseModal.addEventListener("click", closeModal);
+
+ buttonAjout.addEventListener("click", openModal2 );
+
+ iconPrecedent.addEventListener("click", closeModal2);
+
+
+
+ 

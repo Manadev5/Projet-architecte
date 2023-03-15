@@ -18,7 +18,7 @@
 		<ul>
 			<li><a href="index.html">projets</a></li>
 			<li><a href="#contact">contact</a></li>
-			<li><a id="connexion" href="login.html">login</a></li>
+			<li><a id="connexion" href="login.html"></a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -42,84 +42,47 @@
 	<aside class="modal" id="modal1" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal">
 	
 		<div class="modal-wrapper">
+			<a href=""><i class="fa-solid fa-xmark"></i></a>
 			<h3 id="title-modal">Galerie photo</h3>
-			<a href=""><i class="fa-solid fa-xmark"></i><a>
 
 			<div class="images-modal">
 
-			<figure>
-			<img src="assets/images/abajour-tahina.png" alt=""><br>
-			<figcaption>editer</figcaption>
-		    <a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/appartement-paris-v.png" alt=""><br>
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/appartement-paris-x.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/bar-lullaby-paris.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/hotel-first-arte-new-delhi.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/la-balisiere.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-			</figure>
-
-			<figure>
-			<img src="assets/images/le-coteau-cassis.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/restaurant-sushisen-londres.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/structures-thermopolis.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/villa-ferneze.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/appartement-paris-xviii.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
+			
 
 		    </div>
-			
+
             <div class="add-photo">
-			<button>Ajouter une photo</button><br>
+			<button class="button-ajout">Ajouter une photo</button><br>
 			<a href="">Supprimer la galerie</a>
 		    </div>
 
+		</div>
+		<div class="formulaire-modal">
+			<i class="fa-solid fa-arrow-left"></i>
+			<a href=""><i class="fa-solid fa-xmark"></i></a>
+			<h3>Ajout photo</h3>
+
+			<form class= "formulaires" action="#" method="post">
+                <div class ="formulaire-image">
+				<i class="fa-sharp fa-regular fa-image"></i>
+				<input type="file" id="image" name="image" accept="image/png, image/jpeg">
+				<label id="label-image" for="image">+ ajouter photo</label>
+				<p>jpg, png : 4mo max</p>
+                </div>
+
+				<label id="label-titre" for="titre">Titre</label>
+				<input type="text" name="titre" id="titre"> 
+
+				<label id="label-categorie" for="categorie">Categorie</label>
+				<select name="types-categorie" id="types-categorie">
+					<option value="objet">Objet</option>
+					<option value="appartements">Appartements</option>
+					<option value="hotel & restaurants">Hotel & restaurants</option>
+				</select>
+			</form>
+			<div class="button-valider">
+			<button class ="btn-valider">valider</button>
+		    </div>
 		</div>
 	</aside>
 	<section id="portfolio">
