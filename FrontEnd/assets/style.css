@@ -35,6 +35,41 @@ ol, ul {
 	list-style: none;
 }
 
+.mode-edition{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	height: 59px;
+	width: 100%;
+	background-color: black;
+	display: none;
+}
+
+.mode-edition i{
+	color: white;
+	margin-right: 10px;
+}
+
+.mode-edition p{
+	color: white;
+}
+
+.mode-edition button{
+	width: 216px;
+	height: 38px;
+	font-size: 14px;
+	color: black;
+	border-color: white;
+}
+.mode-edition button:hover{
+	color: black;
+	border-color: white;
+	background-color: white;
+}
+
 a{
 	text-decoration: none;
 	color: black;
@@ -214,6 +249,12 @@ footer nav ul {
 	margin: 0;
 }
 
+.mot-de-passe{
+	display: flex;
+	justify-content: center;
+	text-decoration: underline;
+}
+
 i{
 	font-size: 15px;
 }
@@ -280,11 +321,12 @@ i{
 	display: grid;
 	grid-template-columns: 78px 78px 78px 78px 78px;
 	grid-template-rows: 104px 104px 104px;
-	justify-content: center;
 	row-gap: 25px;
-	column-gap: 15px;
+	column-gap: 6px;
 	padding-bottom: 47px;
-	border-bottom:1px solid #B3B3B3;
+	border-bottom: 3px solid #B3B3B3;
+	width: 420px;
+	margin-left: 17%;
 }
 
 h3{
@@ -377,7 +419,7 @@ h3{
 }
 
  #image{
-	display: none;
+   display: none;
 	
 }
 

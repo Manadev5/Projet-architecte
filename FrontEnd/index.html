@@ -12,7 +12,13 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	<div class="mode-edition">
+		<i class="fa-solid fa-pen-to-square"></i>
+		<p>Mode édition</p>
+		<button>publier les changement</button>
+	</div>
 <header>
+	
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
@@ -35,13 +41,13 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<div class="modifier-photo" href="">
+	<div class="modifier-photo" >
 	<i class="fa-solid fa-pen-to-square"></i>
 	<p>modifier</p>
     </div>
 	<aside class="modal" id="modal1" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal">
 	
-		<div class="modal-wrapper">
+		<div id="modal-photo"class="modal-wrapper">
 			<a href=""><i class="fa-solid fa-xmark"></i></a>
 			<h3 id="title-modal">Galerie photo</h3>
 
@@ -53,7 +59,7 @@
 
             <div class="add-photo">
 			<button class="button-ajout">Ajouter une photo</button><br>
-			<a href="">Supprimer la galerie</a>
+			<a href="#modal-1">Supprimer la galerie</a>
 		    </div>
 
 		</div>
@@ -62,12 +68,13 @@
 			<a href=""><i class="fa-solid fa-xmark"></i></a>
 			<h3>Ajout photo</h3>
 
-			<form class= "formulaires" action="#" method="post">
+			<form id="form" class= "formulaires" action="#" method="post">
                 <div class ="formulaire-image">
+				<img src="" class="img-form">
 				<i class="fa-sharp fa-regular fa-image"></i>
 				<input type="file" id="image" name="image" accept="image/png, image/jpeg">
 				<label id="label-image" for="image">+ ajouter photo</label>
-				<p>jpg, png : 4mo max</p>
+				<p class="text-form">jpg, png : 4mo max</p>
                 </div>
 
 				<label id="label-titre" for="titre">Titre</label>
@@ -75,9 +82,9 @@
 
 				<label id="label-categorie" for="categorie">Categorie</label>
 				<select name="types-categorie" id="types-categorie">
-					<option value="objet">Objet</option>
-					<option value="appartements">Appartements</option>
-					<option value="hotel & restaurants">Hotel & restaurants</option>
+					<option id="1" value="1">Objet</option>
+					<option id="2" value="2">Appartements</option>
+					<option id="3" value="3">Hotel & restaurants</option>
 				</select>
 			</form>
 			<div class="button-valider">
@@ -88,10 +95,12 @@
 	<section id="portfolio">
 		<div class="modifier-titre">
 		<h2>Mes Projets</h2>
-		<a class="logo-modifier" href="#modal1">
+
+		<a class="logo-modifier" href="#modal-photo">
 		<i class="fa-solid fa-pen-to-square"></i>
 		<p>modifier</p>
 	    </a>
+
 	    </div>
 		<div class="filtres">
 		<button id= "btn-tous">Tous</button>

@@ -116,53 +116,25 @@ fetch("http://localhost:5678/api/works")
                console.log(idDelete);
 
                let token = localStorage.getItem("access-token");
-               fetch(`http://localhost:5678/api/works/${idDelete}`, {
+               fetch('http://localhost:5678/api/works/'+ idDelete, {
                         method:'DELETE',
                        headers:{ 
                          'accept': 'application/json',
                          'Authorization':`Bearer ${token}`
                       }
-                      
+
                        })
             
-                   .then(response => response.json())
+                   .then(response => response.json)
                    .then(response => console.log(response))
-                   .catch(error =>console.error(error) )
+                   .catch(error => console.error(error))
                 })
                });
 
-               let btnValidation = document.querySelector(".btn-valider"); 
-               
-               function addWork(){
-
-                  let imageData = document.getElementById("image");
-                  let titleData = document.getElementById("titre");
-                  let categoryData = document.getElementById("types-categorie");
-
-                  let formData = new FormData();
-                  formData.append("image", imageData.files[0]);
-                  formData.append("title", titleData.value);
-                  formData.append("category", categoryData.categoryId);
-                  console.log(imageData,titleData,categoryData);
-
-                  let token = localStorage.getItem("access-token");
-                  fetch('http://localhost:5678/api/works', {
-                      method : 'POST',
-                      headers :{
-                        'accept' : 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'multipart/form-data'
-                      },
-                      body : formData
-                  })
-                  .then(res => res.json)
-                  .then(res => console.log(res))
-                  .catch(err => console.error(err))
-               }
               
-               btnValidation.addEventListener("click", function(){
-                 addWork();
-               })
+
+              
+             
 
              
 
@@ -176,6 +148,8 @@ let changeConnexion = function (event) {
    let connexion = document.getElementById("connexion");
    let logoModifier = document.querySelector(".logo-modifier");
    let modifierPhoto = document.querySelector(".modifier-photo");
+   let modeEdition = document.querySelector(".mode-edition");
+   let introduction = document.getElementById("introduction")
    let filtres = document.querySelector(".filtres");
    
    
@@ -184,11 +158,13 @@ let changeConnexion = function (event) {
      logoModifier.style.display = "flex";
      modifierPhoto.style.display = "flex";
      filtres.style.display = "none"
+     modeEdition.style.display = "flex";
    }else{
       connexion.innerHTML = "login";
       logoModifier.style.display = "none";
       modifierPhoto.style.display  = "none";
       filtres.style.display = "flex";
+      modeEdition.style.display = "none"
    }
 
    connexion.addEventListener("click", function(event){
@@ -206,6 +182,7 @@ let buttonAjout = document.querySelector(".button-ajout");
 let iconPrecedent = document.querySelector(".fa-arrow-left");
 
 
+
 let openModal = function (open){
    open.preventDefault();
    let target = document.querySelector(".modal");
@@ -213,8 +190,7 @@ let openModal = function (open){
    target.removeAttribute("aria-hidden");
    target.setAttribute("arial-modal", "true");
    body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-   
- 
+  
 }
 
 let closeModal = function(close){
@@ -224,6 +200,7 @@ let closeModal = function(close){
   target.setAttribute("aria-hidden", "true");
   target.setAttribute("arial-modal", "false");
   body.style.backgroundColor = "white";
+ 
 }
 
 let openModal2 = function(open){
@@ -253,5 +230,101 @@ xCloseModal.addEventListener("click", closeModal);
  iconPrecedent.addEventListener("click", closeModal2);
 
 
+
+ let btnValidation = document.querySelector(".btn-valider"); 
+               let form = document.querySelector(".formulaires")
+               let inputImg  = document.getElementById("image");
+               let  inputTitle = document.getElementById("titre");
+               let inputCategory = document.getElementById("types-categorie");
+               let imgForm = document.querySelector("img-form");
+               let message = document.createElement("small");
+               form.appendChild(message);
+
+               inputImg.addEventListener("click", function(){
+                  
+                  document.querySelector(".fa-image").style.display = "none";
+                  document.getElementById("label-image").style.display = "none";  
+                  document.querySelector(".text-form").style.display = "none";
+                  let fileReader = new FileReader();
+                  
+
+                  fileReader.onload = function (){
+
+                     img = new Image();
+                     img.src = fileReader.result;
+                     document.querySelector(".formulaire-image").appendChild(img)
+                  }
+                  
+                  fileReader.readAsDataURL(inputImg.files[0])
+                 
+              }, false);
+
+                            
+
+               btnValidation.addEventListener("click", function(){
+                  enterValues()
+               });
+
+               function enterValues(){
+                  let imageData = inputImg.files[0];
+                  let titleData =  inputTitle.value;
+                  let  categoryData = inputCategory.selectedOptions[0].id;
+                   
+                  if (!imageData || !titleData || !categoryData){
+                     message.textContent = "Tout le champs doivent etre rempli";
+                     message.style.color = "red";
+                     setTimeout(()=> {
+                        message.textContent ="";
+                     }, 2000)
+                     inputImg.value = "";
+                     inputTitle.value = "";
+                     console.log(imageData, titleData, categoryData)
+                  } else {
+                     addWork(imageData, titleData, categoryData);
+                     message.textContent = "contenu envoyé correctement";
+                     message.style.color = "green";
+                     setTimeout(()=> {
+                        message.textContent ="";
+                     }, 2000)
+                     inputImg.value = "";
+                     inputTitle.value = "";
+                  }
+               }
+
+               function addWork(file, title, category){
+
+                  /*let formData = new FormData();
+                  formData.append("image",file);
+                  formData.append("title", title);
+                  formData.append("category", category);
+                  console.log(formData);*/
+                  const form = document.getElementById("form");
+                  const submitter = document.querySelector("button[value=valider]");
+                  const formData = new FormData(form, submitter);
+                  formData.append("image", file);
+
+
+                  for (const [key, value] of formData) {
+
+                     console.log(`${key}: ${value}\n`);
+                  }
+                  
+
+                  let token = window.localStorage.getItem("access-token");
+                  
+                  fetch('http://localhost:5678/api/works', {
+                      method : 'POST',
+                      headers :{
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data'
+                        
+                      },
+                      body : formData
+                  })
+                  .then(res => res.json)
+                  .then(res => console.log(res))
+                  .catch(err => console.error(err))
+                  
+               }
 
  
