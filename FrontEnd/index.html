@@ -12,13 +12,19 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	<div class="mode-edition">
+		<i class="fa-solid fa-pen-to-square"></i>
+		<p>Mode édition</p>
+		<button>publier les changement</button>
+	</div>
 <header>
+	
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li><a href="index.html">projets</a></li>
 			<li><a href="#contact">contact</a></li>
-			<li><a id="connexion" href="login.html">login</a></li>
+			<li><a id="connexion" href="login.html"></a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,100 +41,66 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<div class="modifier-photo" href="">
+	<div class="modifier-photo" >
 	<i class="fa-solid fa-pen-to-square"></i>
 	<p>modifier</p>
     </div>
 	<aside class="modal" id="modal1" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal">
 	
-		<div class="modal-wrapper">
+		<div id="modal-photo"class="modal-wrapper">
+			<a href=""><i class="fa-solid fa-xmark"></i></a>
 			<h3 id="title-modal">Galerie photo</h3>
-			<a href=""><i class="fa-solid fa-xmark"></i><a>
 
 			<div class="images-modal">
 
-			<figure>
-			<img src="assets/images/abajour-tahina.png" alt=""><br>
-			<figcaption>editer</figcaption>
-		    <a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/appartement-paris-v.png" alt=""><br>
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/appartement-paris-x.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/bar-lullaby-paris.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/hotel-first-arte-new-delhi.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/la-balisiere.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-			</figure>
-
-			<figure>
-			<img src="assets/images/le-coteau-cassis.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/restaurant-sushisen-londres.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/structures-thermopolis.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/villa-ferneze.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-			<figure>
-			<img src="assets/images/appartement-paris-xviii.png" alt="">
-			<figcaption>editer</figcaption>
-			<a href=""></a><i class="fa-sharp fa-solid fa-trash-can"></i></a>
-		    </figure>
-
-		    </div>
 			
-            <div class="add-photo">
-			<button>Ajouter une photo</button><br>
-			<a href="">Supprimer la galerie</a>
+
 		    </div>
 
+            <div class="add-photo">
+			<button class="button-ajout">Ajouter une photo</button><br>
+			<a href="#modal-1">Supprimer la galerie</a>
+		    </div>
+
+		</div>
+		<div class="formulaire-modal">
+			<i class="fa-solid fa-arrow-left"></i>
+			<a href=""><i class="fa-solid fa-xmark"></i></a>
+			<h3>Ajout photo</h3>
+
+			<form id="form" class= "formulaires" action="#" method="post">
+                <div class ="formulaire-image">
+				<img src="" class="img-form">
+				<i class="fa-sharp fa-regular fa-image"></i>
+				<input type="file" id="image" name="image" accept="image/png, image/jpeg">
+				<label id="label-image" for="image">+ ajouter photo</label>
+				<p class="text-form">jpg, png : 4mo max</p>
+                </div>
+
+				<label id="label-titre" for="titre">Titre</label>
+				<input type="text" name="titre" id="titre"> 
+
+				<label id="label-categorie" for="categorie">Categorie</label>
+				<select name="types-categorie" id="types-categorie">
+					<option id="1" value="1">Objet</option>
+					<option id="2" value="2">Appartements</option>
+					<option id="3" value="3">Hotel & restaurants</option>
+				</select>
+			</form>
+			<div class="button-valider">
+			<button class ="btn-valider">valider</button>
+		    </div>
 		</div>
 	</aside>
 	<section id="portfolio">
 		<div class="modifier-titre">
 		<h2>Mes Projets</h2>
-		<a class="logo-modifier" href="#modal1">
+
+		<a class="logo-modifier" href="#modal-photo">
 		<i class="fa-solid fa-pen-to-square"></i>
 		<p>modifier</p>
 	    </a>
+
 	    </div>
 		<div class="filtres">
 		<button id= "btn-tous">Tous</button>

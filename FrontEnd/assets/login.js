@@ -30,7 +30,7 @@ const buttonForm = document.getElementById("submit");
       if(data.token){
          localStorage.setItem("access-token", data.token);
          localStorage.setItem("userId", data.userId);
-         window.location.href ="/FrontEnd/";
+         window.location.href ="index.html";
             
       } else{
          alert("mot de passe ou email incorrect");
