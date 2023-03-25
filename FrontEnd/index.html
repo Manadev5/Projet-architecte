@@ -12,11 +12,14 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	
 	<div class="mode-edition">
 		<i class="fa-solid fa-pen-to-square"></i>
 		<p>Mode édition</p>
 		<button>publier les changement</button>
 	</div>
+
+	<main class="body2">
 <header>
 	
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
@@ -45,12 +48,13 @@
 	<i class="fa-solid fa-pen-to-square"></i>
 	<p>modifier</p>
     </div>
+	<!--Creation de la modale qui s'affichera et insertion de parametre lié  à la modale dans la balise aside-->
 	<aside class="modal" id="modal1" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal">
 	
 		<div id="modal-photo"class="modal-wrapper">
 			<a href=""><i class="fa-solid fa-xmark"></i></a>
 			<h3 id="title-modal">Galerie photo</h3>
-
+             <!--Images ajouté dans le fichiers JS galerie-->
 			<div class="images-modal">
 
 			
@@ -63,6 +67,7 @@
 		    </div>
 
 		</div>
+		<!--Placement de la deuxieme modale avec les formulaires-->
 		<div class="formulaire-modal">
 			<i class="fa-solid fa-arrow-left"></i>
 			<a href=""><i class="fa-solid fa-xmark"></i></a>
@@ -102,6 +107,7 @@
 	    </a>
 
 	    </div>
+		<!--Ajout de filtres pour les images selon leur categorie-->
 		<div class="filtres">
 		<button id= "btn-tous">Tous</button>
 	    <button id="btn-objets">Objets</button>
@@ -136,6 +142,6 @@
 	</nav>
 </footer>
 <script src="./assets/galerie.js"></script>
-
+</main>
 </body>
 </html>
