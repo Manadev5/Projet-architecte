@@ -8,9 +8,9 @@ fetch("http://localhost:5678/api/works")
          .then(array => {
             console.log (array);
             let displayWorks = '';
-            //recuperation des chaque image titre
+            //Recuperation des chaque image titre
             for(let element of array){
-            //ajout au DOM des éléments recuperé selon la structure suivante
+            //Ajout au DOM des éléments recuperé selon la structure suivante
                displayWorks += `
                <figure>
 				<img src="${element.imageUrl}" alt="${element.title}">
@@ -22,7 +22,7 @@ fetch("http://localhost:5678/api/works")
 
 
             const btnTous = document.getElementById("btn-tous");
-         // affichage des tous les imgages à travers le boutton "tous"
+         // Affichage des tous les imgages à travers le boutton "tous"
             btnTous.addEventListener("click", function(){
                const allWorks = array.filter(function(array){
                   return array;
@@ -35,7 +35,7 @@ fetch("http://localhost:5678/api/works")
 
 
               const btnObjets = document.getElementById("btn-objets");
-              // affichage des images de la categorie objets à treaers le boutton "objets"
+              //Affichage des images de la categorie objets à treaers le boutton "objets"
               btnObjets.addEventListener("click", function(){
                let objetsWorks = array.filter( function(array){
                   return array.categoryId === 1;
@@ -55,7 +55,7 @@ fetch("http://localhost:5678/api/works")
 
 
                const btnAppartements = document.getElementById("btn-appartements");
-                // affichage des images de la categorie appartements à treaers le boutton "appartements"
+                //Affichage des images de la categorie appartements à treaers le boutton "appartements"
               btnAppartements.addEventListener("click", function(){
                let appartsWorks = array.filter( function(array){
                   return array.categoryId === 2;
@@ -76,7 +76,7 @@ fetch("http://localhost:5678/api/works")
 
 
                const btnHotel = document.getElementById("btn-hotel");
-               // affichage des images de la categorie hotel à travers le boutton "hotel"
+               //Affichage des images de la categorie hotel à travers le boutton "hotel"
               btnHotel.addEventListener("click", function(){
                let hotelWorks = array.filter( function(array){
                   return array.categoryId === 3;
@@ -110,7 +110,7 @@ fetch("http://localhost:5678/api/works")
              photosModal.innerHTML = modalWorks;
             }
 
-            //requete de la function delete à travers l'API en clicquant l'icone corbeille
+            //Requete de la function delete à travers l'API en clicquant l'icone corbeille
             document.querySelectorAll(".fa-trash-can").forEach(element =>{
                element.addEventListener("click", function (event){
                   event.preventDefault();
@@ -228,7 +228,7 @@ let closeModal2 = function(close){
    modalWrapper.style.display = "block";
    body.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
 }
-
+// Fonction qui empeche à la propagation du clique vers autres éléments du site
 let noPropagation = function(e){
    e.stopPropagation();
 }
@@ -243,14 +243,15 @@ buttonAjout.addEventListener("click", openModal2 );
 
 iconPrecedent.addEventListener("click", closeModal2);
 
+//Fermature de la modale à travers le clicque effectué n'importe ou
 window.addEventListener("click", closeModal);
-
+//Propagation sur le logo qui ouvre la modale
 logoModifier.addEventListener("click", noPropagation);
-
+//Propagation sur la modale 
 modalAside.addEventListener("click", noPropagation);
-
+//Propagation sur le menu du navigation 
 document.querySelector("nav").addEventListener("click", noPropagation);
-
+//Propagation sur le bouton dans le formulaire contact
 document.getElementById("btn-contact").addEventListener("click", noPropagation);
 
 
@@ -269,7 +270,7 @@ document.getElementById("btn-contact").addEventListener("click", noPropagation);
                let message = document.createElement("small");
                form.appendChild(message);
                
-               //Affichege de l'image qu'on veut envoyer à l'api 
+               //Affichage de l'image selectionné qui verra en suite affiché 
                inputImg.addEventListener("change", function(){
                   
                   document.querySelector(".fa-image").style.display = "none";
@@ -291,7 +292,7 @@ document.getElementById("btn-contact").addEventListener("click", noPropagation);
               }, false);
 
                             
-               //Evenement clicque pour envoyer le donnée
+               //Evenement "click" pour envoyer les données
                btnValidation.addEventListener("click", function(){
                   enterValues()
                });
@@ -332,7 +333,7 @@ document.getElementById("btn-contact").addEventListener("click", noPropagation);
                }
                 
 
-                //Fonction qu'envoie la requete à l'API pour envoyer les données du formulaire
+                //Fonction qu'envoie la requete à l'API, contenant les données du formulaire
                 function addWork(file, title, category) {
                   let formData = new FormData();
                   formData.append("image", file);
