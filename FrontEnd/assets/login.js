@@ -37,7 +37,7 @@ const buttonForm = document.getElementById("submit");
          window.location.href ="index.html";
             
       } else{
-         alert("mot de passe ou email incorrect");
+         alert("Erreur dans l'identifiant ou le mot de passe");
       }
    })
 

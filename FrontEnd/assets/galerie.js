@@ -185,13 +185,13 @@ let body = document.querySelector("body");
 let buttonAjout = document.querySelector(".button-ajout");
 let iconPrecedent = document.querySelector(".fa-arrow-left");
 let introduction = document.getElementById("introduction");
-
+let modalAside = document.getElementById("modal1");
 
 //Fonction pour ouvrir la modale
 let openModal = function (open){
    open.preventDefault();
    let target = document.querySelector(".modal");
-   target.style.display = "flex";
+   target.style.display = "block";
    target.removeAttribute("aria-hidden");
    target.setAttribute("arial-modal", "true");
    body.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
@@ -229,13 +229,31 @@ let closeModal2 = function(close){
    body.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
 }
 
+let noPropagation = function(e){
+   e.stopPropagation();
+}
+
 logoModifier.addEventListener("click", openModal);
 
 xCloseModal.addEventListener("click", closeModal);
 
- buttonAjout.addEventListener("click", openModal2 );
+document.getElementById("xmark2").addEventListener("click", closeModal);
 
- iconPrecedent.addEventListener("click", closeModal2);
+buttonAjout.addEventListener("click", openModal2 );
+
+iconPrecedent.addEventListener("click", closeModal2);
+
+window.addEventListener("click", closeModal);
+
+logoModifier.addEventListener("click", noPropagation);
+
+modalAside.addEventListener("click", noPropagation);
+
+document.querySelector("nav").addEventListener("click", noPropagation);
+
+document.getElementById("btn-contact").addEventListener("click", noPropagation);
+
+
 
  
 
