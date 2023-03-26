@@ -1,11 +1,11 @@
 //Recuperation du bouton à cliquer
 const buttonForm = document.getElementById("submit");
     
-//àppele del'évenement click pour le bouton
+//Appèle del'évenement click pour le bouton
  buttonForm.addEventListener("click", function(event){
    
    event.preventDefault();
-//recuperation des valuers des input du formulaire
+//Recuperation des valuers des input du formulaire
    const email = document.getElementById("email").value;
    const password = document.getElementById("password").value;
 
@@ -14,7 +14,7 @@ const buttonForm = document.getElementById("submit");
    //Traduction des valeurs en langage JSON
    let requestBody =JSON.stringify({email:email, password:password});
    console.log(requestBody);
-   //requete POST à l'API
+   //Requete POST à l'API
    fetch('http://localhost:5678/api/users/login', {
       method: 'POST',
       headers: {
@@ -23,7 +23,8 @@ const buttonForm = document.getElementById("submit");
    },
       body: requestBody
    })
-  // Traitement de la reponse
+
+  //Traitement de la reponse
    .then(res => {
       console.log(res)
       return res.json();
@@ -37,7 +38,7 @@ const buttonForm = document.getElementById("submit");
          window.location.href ="index.html";
             
       } else{
-         alert("mot de passe ou email incorrect");
+         alert("Erreur dans l'identifiant ou le mot de passe");
       }
    })
 
