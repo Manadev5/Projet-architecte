@@ -203,6 +203,7 @@ button:active{
 
 .gallery img {
 	width: 100%;
+	height: 420px;
 
 }
 #contact, #formulaire-login {
@@ -407,19 +408,19 @@ h3{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-top: 28px;
 	border: 1px solid #E8F1F6;
 	background-color: #E8F1F6;
 	width: 420px;
-	height: 149px;
+	height: 169px;
 	margin-bottom: 30px;
 	border-radius: 3px;
 }
 
 
 .fa-image{
-   font-size: 58px;
-   padding-bottom: 21px;
+   font-size: 48px;
+   padding-bottom: 27px;
+   padding-top: 27px;
    color: #B9C5CC;
 }
 
@@ -438,6 +439,10 @@ h3{
 	font-size: 14px;
 }
 
+.text-form{
+	margin: 0;
+	font-size: 10px;
+}
 
 .ajout-img:hover{
 	background-color: #CBD6DC;
@@ -477,10 +482,9 @@ h3{
 }
 
 .img-form{
+	height: 169px;
 	width : 129px;
-	height: 250px;
-	position: relative;
-	bottom : 25px;
+	
 	display: none;
 }
 
