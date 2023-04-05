@@ -1,5 +1,6 @@
-//recuperation des données de l'API à travers la fonction fetch
-fetch("http://localhost:5678/api/works")
+//recuperation des données de l'API à travers la propriété fetch
+let afficherGallery = function(){
+  fetch("http://localhost:5678/api/works")
   .then((res) => {
     // Recuperation de la reponse en json
     console.log(res);
@@ -12,8 +13,8 @@ fetch("http://localhost:5678/api/works")
     for (let element of array) {
       //Ajout au DOM des éléments recuperé selon la structure suivante
       displayWorks += `
-               <figure>
-				<img src="${element.imageUrl}" alt="${element.title}">
+               <figure class ="image-gallery">
+				<img  src="${element.imageUrl}" alt="${element.title}">
 				<figcaption>${element.title}</figcaption>
 			</figure> `;
       let gallery = document.querySelector(".gallery");
@@ -40,7 +41,7 @@ fetch("http://localhost:5678/api/works")
         let visualWorks = "";
         for (let element of objetsWorks) {
           visualWorks += `
-                  <figure>
+                  <figure class ="image-gallery">
                <img src="${element.imageUrl}" alt="${element.title}">
                <figcaption>${element.title}</figcaption>
             </figure> `;
@@ -58,7 +59,7 @@ fetch("http://localhost:5678/api/works")
         let visualWorks = "";
         for (let element of appartsWorks) {
           visualWorks += `
-                  <figure>
+                  <figure class ="image-gallery">
                <img src="${element.imageUrl}" alt="${element.title}">
                <figcaption>${element.title}</figcaption>
             </figure> `;
@@ -76,7 +77,7 @@ fetch("http://localhost:5678/api/works")
         let visualWorks = "";
         for (let element of hotelWorks) {
           visualWorks += `
-                  <figure>
+                  <figure class ="image-gallery">
                <img src="${element.imageUrl}" alt="${element.title}">
                <figcaption>${element.title}</figcaption>
             </figure> `;
@@ -89,7 +90,7 @@ fetch("http://localhost:5678/api/works")
       let modalWorks = "";
       for (let element of array) {
         modalWorks += `
-              <figure>
+              <figure class = "grid-modal" >
 			    <img src="${element.imageUrl}" alt="">
 			    <figcaption>editer</figcaption>
 			    <i class="fa-sharp fa-solid fa-trash-can" data-id="${element.id}"></i>
@@ -99,14 +100,14 @@ fetch("http://localhost:5678/api/works")
         photosModal.innerHTML = modalWorks;
       }
 
+      
+      
       //Requete de la function delete à travers l'API en clicquant l'icone corbeille
       document.querySelectorAll(".fa-trash-can").forEach((element) => {
         element.addEventListener("click", function (event) {
           event.preventDefault();
-
           let idDelete = element.dataset.id;
           console.log(idDelete);
-
           let token = localStorage.getItem("access-token");
           fetch("http://localhost:5678/api/works/" + idDelete, {
             method: "DELETE",
@@ -114,14 +115,24 @@ fetch("http://localhost:5678/api/works")
               accept: "application/json",
               Authorization: `Bearer ${token}`,
             },
+            
           })
+          
             .then((response) => response.json)
-            .then((response) => console.log(response))
+            .then((response) => {console.log(response)
+              //Suppresion des projets dans le DOM
+              afficherGallery();
+            }
+            )
             .catch((error) => console.error(error));
+            
         });
       });
     }
   });
+}
+
+afficherGallery();
 
 let changeConnexion = function (event) {
   //Recuperation des éléments à cacher est à montrer après le login
@@ -244,9 +255,7 @@ let message = document.createElement("small");
 form.appendChild(message);
 
 //Affichage de l'image selectionné qui verra en suite affiché
-inputImg.addEventListener(
-  "change",
-  function () {
+inputImg.addEventListener("change", function () {
     document.querySelector(".fa-image").style.display = "none";
     document.getElementById("label-image").style.display = "none";
     document.querySelector(".text-form").style.display = "none";
@@ -288,8 +297,6 @@ btnValidation.addEventListener("click", function () {
 
 
 
-
-
 //Fonction avec condition et affichage des messages lors de l'envoie
 function enterValues() {
   let imageData = inputImg.files[0];
@@ -312,6 +319,7 @@ function enterValues() {
     document.querySelector(".text-form").style.display = "block";
     console.log(imageData, titleData, categoryData);
   } else {
+    
     addWork(imageData, titleData, categoryData);
     message.textContent = "contenu envoyé correctement";
     message.style.color = "green";
@@ -341,12 +349,15 @@ function addWork(file, title, category) {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
-      /*accept: "application/json",
-                      "Content-Type": "multipart/form-data",*/
+      accept: "application/json",
+                      //"Content-Type": "multipart/form-data",*/
     },
     body: formData,
   })
     .then((res) => res.json)
-    .then((res) => console.log(res))
+    .then((res) => {console.log(res)
+     //Affichage des projets dans le DOM
+     afficherGallery();
+    })
     .catch((err) => console.error(err));
 }
