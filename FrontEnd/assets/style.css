@@ -303,6 +303,7 @@ i{
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.8);
 	display: none;
+	
 }
 
 .modal-wrapper img{
@@ -312,6 +313,7 @@ i{
 
 .modal-wrapper{
 	position: absolute;
+	overflow: auto;
 	left: 30%;
 	width: 630px;
 	height: 731px;
@@ -380,6 +382,7 @@ h3{
 
 .formulaire-modal{
 	position: absolute;
+	overflow: auto;
 	left: 30%;
 	width: 630px;
 	height: 670px;
@@ -509,4 +512,16 @@ h3{
 .fa-arrow-left{
 	margin-left: 30px;
 	padding-top: 30px;
+}
+
+.fa-arrows-up-down-left-right{
+	position: relative;
+	bottom: 105%;
+	left : 5%;
+	font-size: 11px;
+	border: 1px solid black;
+	padding: 3px;
+	color : white;
+	background-color: black;
+
 }

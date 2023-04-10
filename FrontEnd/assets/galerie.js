@@ -99,7 +99,12 @@ let afficherGallery = function(){
         photosModal.innerHTML = "";
         photosModal.innerHTML = modalWorks;
       }
+       let iconFleches = document.createElement("i");
+       iconFleches.setAttribute("class", "fa-solid fa-arrows-up-down-left-right");
 
+       let gridModal = document.querySelector(".grid-modal");
+
+       gridModal.appendChild(iconFleches);
       
       
       //Requete de la function delete à travers l'API en clicquant l'icone corbeille
@@ -255,23 +260,35 @@ let message = document.createElement("small");
 form.appendChild(message);
 
 //Affichage de l'image selectionné qui verra en suite affiché
+
 inputImg.addEventListener("change", function () {
-    document.querySelector(".fa-image").style.display = "none";
-    document.getElementById("label-image").style.display = "none";
-    document.querySelector(".text-form").style.display = "none";
-    let fileReader = new FileReader();
+   var fileLimit = 4000;
+    var files = inputImg.files; 
+    var fileSize = inputImg.files[0].size; 
+    var fileSizeInKB = (fileSize/1024);
+    if(fileSizeInKB < fileLimit){
+      document.querySelector(".fa-image").style.display = "none";
+      document.getElementById("label-image").style.display = "none";
+      document.querySelector(".text-form").style.display = "none";
+  
+      
+      let fileReader = new FileReader();
+  
+      fileReader.onload = function () {
+        img = document.querySelector(".img-form");
+        img.style.display = "block";
+        img.src = fileReader.result;
+      };
+  
+      fileReader.readAsDataURL(inputImg.files[0]);
+      changeColorBtn();
+       
+     } else {
+      alert("fichiers trop lourd");
+      inputImg.value = "";
+     }
 
-    fileReader.onload = function () {
-      img = document.querySelector(".img-form");
-      img.style.display = "block";
-      img.src = fileReader.result;
-    };
-
-    fileReader.readAsDataURL(inputImg.files[0]);
-    changeColorBtn();
-  },
-  false
-);
+})
 
 inputTitle.addEventListener("change", function(e){
    changeColorBtn();
@@ -350,7 +367,7 @@ function addWork(file, title, category) {
     headers: {
       Authorization: `Bearer ${token}`,
       accept: "application/json",
-                      //"Content-Type": "multipart/form-data",*/
+      //"Content-Type": "multipart/form-data",*/
     },
     body: formData,
   })
